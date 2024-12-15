@@ -26,6 +26,9 @@ const LAYER_PLAYER = 4
 @onready var camera = $Head/Camera3D
 @onready var left_hand = $lefthand
 @onready var right_hand = $righthand
+@onready var horn1 = $Head/Camera3D/horn1
+@onready var horn2 = $Head/Camera3D/horn2
+@onready var horn3 = $Head/Camera3D/horn3
 @onready var grab_sound = $"../grabsound"
 @onready var hand_fx = $"../Map/GPUParticles3D"
 
@@ -255,10 +258,40 @@ func _on_left_hand_body_entered(body):
 	match body.name:
 		"CSGSphere3D":
 			grab_sound.play()
-		"Button2":
-			#grab_sound_2.play()
+		"CSGSphere3D6":
+			horn1.play()
+		"CSGSphere3D9":
+			#grab_sound_3.play()
 			pass
-		"Button3":
+		"CSGSphere3D11":
+			#grab_sound_3.play()
+			pass
+		"CSGSphere3D12":
+			#grab_sound_3.play()
+			pass
+		"CSGSphere3D10":
+			#grab_sound_3.play()
+			pass
+		"CSGSphere3D6":
+			#grab_sound_3.play()
+			pass
+		"CSGSphere3D7":
+			#grab_sound_3.play()
+			pass
+		"CSGSphere3D13":
+			#grab_sound_3.play()
+			pass
+		"CSGSphere3D8":
+			horn2.play()
+		"CSGSphere3D2":
+			#grab_sound_3.play()
+			pass
+		"CSGSphere3D3":
+			horn3.play()
+		"CSGSphere3D4":
+			#grab_sound_3.play()
+			pass
+		"CSGSphere3D5":
 			#grab_sound_3.play()
 			pass
 		_:
@@ -266,7 +299,13 @@ func _on_left_hand_body_entered(body):
 
 
 func _on_right_hand_body_entered(body):
-	if body is CSGShape3D:  # Check if the collided object is a CSG node
-		grab_sound.play()
-		grab_point_right = right_hand.global_position
-		right_hand_grabbing = true
+	match body.name:
+		"CSGSphere3D":
+			grab_sound.play()
+		"CSGSPhere3D6":
+			horn1.play()
+		"Button3":
+			#grab_sound_3.play()
+			pass
+		_:
+			print("Unknown object grabbed: ", body.name)
