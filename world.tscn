@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://daea0cguij4h2"]
+[gd_scene load_steps=67 format=3 uid="uid://daea0cguij4h2"]
 
 [ext_resource type="Material" uid="uid://rt8kwy52hryb" path="res://Materials/highlight.tres" id="1_lgiqj"]
 [ext_resource type="Texture2D" uid="uid://cbywlgvjn8emc" path="res://Textures/696.jpg" id="1_rpqyh"]
@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://cj5sso7ef3rf7" path="res://Sounds/SFX/bass1.wav" id="26_k7ld4"]
 [ext_resource type="AudioStream" uid="uid://bhwi74n515jgh" path="res://Sounds/SFX/bass2.wav" id="27_7mwna"]
 [ext_resource type="AudioStream" uid="uid://bbffujko8t38i" path="res://Sounds/SFX/bass3.wav" id="28_hb4g1"]
+[ext_resource type="AudioStream" uid="uid://2j5tg7qg48g5" path="res://Sounds/Music/rain.wav" id="29_6jpx4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v853q"]
 sky_top_color = Color(0.0875817, 0.121094, 0.0859752, 1)
@@ -51,9 +52,9 @@ ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
 glow_enabled = true
+fog_enabled = true
 fog_light_color = Color(0.990259, 1, 0.888142, 1)
-fog_light_energy = 0.02
-fog_density = 0.1
+fog_light_energy = 0.16
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0605
 volumetric_fog_albedo = Color(0.450592, 0.5, 0.447592, 1)
@@ -81,8 +82,68 @@ uv1_triplanar = true
 albedo_texture = ExtResource("3_umbod")
 uv1_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwfni"]
+albedo_texture = ExtResource("4_bqfis")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mebsk"]
 albedo_texture = ExtResource("3_umbod")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fc2xr"]
+albedo_texture = ExtResource("4_bqfis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1bj0"]
+albedo_texture = ExtResource("4_bqfis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wq81n"]
+albedo_texture = ExtResource("4_bqfis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7ijp"]
+albedo_texture = ExtResource("4_bqfis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usvjl"]
+albedo_texture = ExtResource("4_bqfis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5q7bq"]
+albedo_texture = ExtResource("4_bqfis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5gq1e"]
+albedo_texture = ExtResource("4_bqfis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjw0p"]
+albedo_texture = ExtResource("4_bqfis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxmga"]
+albedo_texture = ExtResource("4_bqfis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k476u"]
+albedo_texture = ExtResource("4_bqfis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kakpo"]
+albedo_texture = ExtResource("4_bqfis")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3gmih"]
+albedo_texture = ExtResource("4_bqfis")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7fqr"]
+albedo_texture = ExtResource("4_bqfis")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wv64i"]
+albedo_texture = ExtResource("4_bqfis")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6fu0"]
+albedo_texture = ExtResource("4_bqfis")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mr15i"]
+albedo_texture = ExtResource("4_bqfis")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0jkk"]
+albedo_texture = ExtResource("4_bqfis")
 uv1_triplanar = true
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vxuxf"]
@@ -243,47 +304,58 @@ material = ExtResource("1_lgiqj")
 [node name="CSGBox3D4" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 8.5, 0)
 size = Vector3(1, 18, 51)
+material = SubResource("StandardMaterial3D_kwfni")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8.5, 0)
 material_override = SubResource("StandardMaterial3D_mebsk")
 size = Vector3(1, 18, 51)
+material = SubResource("StandardMaterial3D_fc2xr")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="Map"]
 transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, 18, 21.5, 0)
 size = Vector3(1, 18, 51)
+material = SubResource("StandardMaterial3D_j1bj0")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-0.5, -0.866025, 0, 0.866025, -0.5, 0, 0, 0, 1, -18, 21.5, 0)
 size = Vector3(1, 18, 51)
+material = SubResource("StandardMaterial3D_wq81n")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-0.902277, -0.431157, 0, 0.431157, -0.902277, 0, 0, 0, 1, -6.5, 34, 0)
 size = Vector3(1, 18, 51)
+material = SubResource("StandardMaterial3D_x7ijp")
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="Map"]
 transform = Transform3D(0.94288, -0.333132, 0, 0.333132, 0.94288, 0, 0, 0, 1, 7.5, 33.5, 0)
 size = Vector3(1, 18, 51)
+material = SubResource("StandardMaterial3D_usvjl")
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.24925, 41.9642, 0)
 size = Vector3(1, 10.5, 51)
+material = SubResource("StandardMaterial3D_5q7bq")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 31, 25.5)
 size = Vector3(1, 27, 51)
+material = SubResource("StandardMaterial3D_5gq1e")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 8.5, 25.5)
 size = Vector3(1, 18, 51)
+material = SubResource("StandardMaterial3D_jjw0p")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 9, -25.5)
 size = Vector3(1, 19, 51)
+material = SubResource("StandardMaterial3D_kxmga")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 32.75, -25.5)
 size = Vector3(1, 29.5, 51)
+material = SubResource("StandardMaterial3D_k476u")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 11.5, -16.5)
@@ -306,30 +378,37 @@ material = ExtResource("1_lgiqj")
 [node name="CSGBox3D18" type="CSGBox3D" parent="Map"]
 transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -10.75, 6.26795, -18)
 size = Vector3(1.5, 16, 1)
+material = SubResource("StandardMaterial3D_kakpo")
 
 [node name="CSGBox3D20" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.25, 2.76795, -18)
 size = Vector3(1.5, 9, 1)
+material = SubResource("StandardMaterial3D_3gmih")
 
 [node name="CSGBox3D22" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -9.25, 5.01795, -18)
 size = Vector3(1.5, 4.5, 1)
+material = SubResource("StandardMaterial3D_q7fqr")
 
 [node name="CSGBox3D23" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 9.75, 5.01795, -18)
 size = Vector3(1.5, 4.5, 1)
+material = SubResource("StandardMaterial3D_wv64i")
 
 [node name="CSGBox3D21" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.25, 2.76795, -18)
 size = Vector3(1.5, 9, 1)
+material = SubResource("StandardMaterial3D_s6fu0")
 
 [node name="CSGBox3D19" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-0.866025, 0.5, 0, -0.5, -0.866025, 0, 0, 0, 1, 10.75, 6.26795, -18)
 size = Vector3(1.5, 16, 1)
+material = SubResource("StandardMaterial3D_mr15i")
 
 [node name="CSGBox3D24" type="CSGBox3D" parent="Map"]
 transform = Transform3D(4.47035e-08, -2.23517e-08, 1, -0.5, -0.866025, -7.1967e-09, 0.866025, -0.5, -2.98023e-08, 0.25, 6.26795, -21.5)
 size = Vector3(1.5, 16, 1)
+material = SubResource("StandardMaterial3D_q0jkk")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 script = ExtResource("1_vwaj1")
@@ -350,7 +429,7 @@ fov = 90.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Player/Head/Camera3D"]
 light_color = Color(1, 0.98395, 0.638086, 1)
-spot_range = 7.5
+spot_range = 17.0
 spot_angle = 65.082
 
 [node name="background" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
@@ -431,6 +510,10 @@ volume_db = -5.0
 [node name="bass3" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
 stream = ExtResource("28_hb4g1")
 volume_db = -5.0
+
+[node name="rain" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("29_6jpx4")
+volume_db = 5.0
 
 [node name="lefthand" type="RigidBody3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.2, -0.6)

@@ -290,9 +290,6 @@ func _on_left_hand_body_entered(body):
 			noise2.play()
 		"CSGSphere3D10":
 			chord3.play()
-		"CSGSphere3D6":
-			#grab_sound_3.play()
-			pass
 		"CSGSphere3D7":
 			hum2.play()
 		"CSGSphere3D13":
@@ -330,11 +327,48 @@ func _on_left_hand_body_entered(body):
 func _on_right_hand_body_entered(body):
 	match body.name:
 		"CSGSphere3D":
-			grab_sound.play()
-		"CSGSPhere3D6":
+			hum1.play()
+		"CSGSphere3D6":
 			horn1.play()
-		"Button3":
-			#grab_sound_3.play()
-			pass
+		"CSGSphere3D9":
+			chord1.play()
+		"CSGSphere3D11":
+			chord2.play()
+		"CSGSphere3D12":
+			noise1.play()
+		"CSGSphere3D14":
+			noise2.play()
+		"CSGSphere3D10":
+			chord3.play()
+		"CSGSphere3D7":
+			hum2.play()
+		"CSGSphere3D13":
+			chord4.play()
+		"CSGSphere3D8":
+			horn2.play()
+		"CSGSphere3D2":
+			bar1.play()
+		"CSGSphere3D3":
+			horn3.play()
+		"CSGSphere3D4":
+			bar2.play()
+		"CSGSphere3D5":
+			horn4.play()
+		"CSGCylinder3D":
+			synth1.play()
+		"CSGCylinder3D2":
+			synth2.play()
+		"CSGBox3D3":
+			glitch1.play()
+		"CSGBox3D16":
+			glitch2.play()
+		"CSGBox3D17":
+			glitch3.play()
+		"CSGCylinder3D3":
+			bass1.play()
+		"CSGCylinder3D4":
+			bass2.play()
+		"CSGCylinder3D5":
+			bass3.play()
 		_:
 			print("Unknown object grabbed: ", body.name)
