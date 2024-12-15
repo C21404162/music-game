@@ -1,11 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://daea0cguij4h2"]
+[gd_scene load_steps=45 format=3 uid="uid://daea0cguij4h2"]
 
 [ext_resource type="Material" uid="uid://rt8kwy52hryb" path="res://Materials/highlight.tres" id="1_lgiqj"]
 [ext_resource type="Texture2D" uid="uid://cbywlgvjn8emc" path="res://Textures/696.jpg" id="1_rpqyh"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_vwaj1"]
 [ext_resource type="Texture2D" uid="uid://c2ote7bbhccsr" path="res://Textures/cobble_wall.png" id="3_umbod"]
 [ext_resource type="Texture2D" uid="uid://diq7n02p7gbs4" path="res://Models/wooden_plank_model_wood_bark.png" id="4_bqfis"]
-[ext_resource type="Script" path="res://interactray.gd" id="9_bfa6a"]
 [ext_resource type="PackedScene" uid="uid://jjevgaxgt0p5" path="res://Models/bad_hand_right.glb" id="9_gmq14"]
 [ext_resource type="AudioStream" uid="uid://sf81vfawsnaa" path="res://Sounds/Music/ambience.wav" id="10_gwq0n"]
 [ext_resource type="PackedScene" uid="uid://bn52fufkkj352" path="res://Models/bad_hand_left.glb" id="10_rudq1"]
@@ -20,6 +19,15 @@
 [ext_resource type="AudioStream" uid="uid://ba30fb8b6dvo" path="res://Sounds/SFX/hum2.wav" id="15_1xd3t"]
 [ext_resource type="AudioStream" uid="uid://hpihldvyodii" path="res://Sounds/SFX/synth1.wav" id="16_sh6rb"]
 [ext_resource type="AudioStream" uid="uid://bhktaqslsekc8" path="res://Sounds/SFX/synth2.wav" id="17_qfxv6"]
+[ext_resource type="AudioStream" uid="uid://drjcreefojid5" path="res://Sounds/SFX/glitch1.wav" id="18_0ecmy"]
+[ext_resource type="AudioStream" uid="uid://cqifout3x40ch" path="res://Sounds/SFX/glitch2.wav" id="19_ilaq4"]
+[ext_resource type="AudioStream" uid="uid://bwin3y6fhvbwd" path="res://Sounds/SFX/glitch3.wav" id="20_g353h"]
+[ext_resource type="AudioStream" uid="uid://dbmt0i0mvdbe8" path="res://Sounds/SFX/chord1.wav" id="21_grqx8"]
+[ext_resource type="AudioStream" uid="uid://b84x60y2ox0fb" path="res://Sounds/SFX/chord2.wav" id="22_b1ops"]
+[ext_resource type="AudioStream" uid="uid://c1no3gilwx4o8" path="res://Sounds/SFX/chord3.wav" id="23_n47wt"]
+[ext_resource type="AudioStream" uid="uid://b414fb0wgbt0w" path="res://Sounds/SFX/chord4.wav" id="24_p16gi"]
+[ext_resource type="AudioStream" uid="uid://bs42h6chisyk" path="res://Sounds/SFX/noise1.wav" id="24_ssq46"]
+[ext_resource type="AudioStream" uid="uid://ojmpc84wy53j" path="res://Sounds/SFX/noise2.wav" id="25_a5p1m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v853q"]
 sky_top_color = Color(0.0875817, 0.121094, 0.0859752, 1)
@@ -69,10 +77,6 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fib2t"]
 albedo_texture = ExtResource("3_umbod")
 uv1_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_dum3j"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_x0cdh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mebsk"]
 albedo_texture = ExtResource("3_umbod")
@@ -233,15 +237,6 @@ transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 6.2832
 use_collision = true
 material = ExtResource("1_lgiqj")
 
-[node name="Node3D" type="RigidBody3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -4.5)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Node3D"]
-mesh = SubResource("BoxMesh_dum3j")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Node3D"]
-shape = SubResource("BoxShape3D_x0cdh")
-
 [node name="CSGBox3D4" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 8.5, 0)
 size = Vector3(1, 18, 51)
@@ -289,18 +284,49 @@ size = Vector3(1, 29.5, 51)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 11.5, -16.5)
+use_collision = true
 size = Vector3(2.5, 4, 1)
 material = ExtResource("1_lgiqj")
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 6.5, -16.5)
+use_collision = true
 size = Vector3(1.5, 3.5, 1)
 material = ExtResource("1_lgiqj")
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 11.5, -16.5)
+use_collision = true
 size = Vector3(2.5, 4, 1)
 material = ExtResource("1_lgiqj")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Map"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -10.75, 6.26795, -18)
+size = Vector3(1.5, 16, 1)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.25, 2.76795, -18)
+size = Vector3(1.5, 9, 1)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -9.25, 5.01795, -18)
+size = Vector3(1.5, 4.5, 1)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 9.75, 5.01795, -18)
+size = Vector3(1.5, 4.5, 1)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.25, 2.76795, -18)
+size = Vector3(1.5, 9, 1)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-0.866025, 0.5, 0, -0.5, -0.866025, 0, 0, 0, 1, 10.75, 6.26795, -18)
+size = Vector3(1.5, 16, 1)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Map"]
+transform = Transform3D(4.47035e-08, -2.23517e-08, 1, -0.5, -0.866025, -7.1967e-09, 0.866025, -0.5, -2.98023e-08, 0.25, 6.26795, -21.5)
+size = Vector3(1.5, 16, 1)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 script = ExtResource("1_vwaj1")
@@ -323,11 +349,6 @@ fov = 90.0
 light_color = Color(1, 0.98395, 0.638086, 1)
 spot_range = 7.5
 spot_angle = 65.082
-
-[node name="interactray" type="RayCast3D" parent="Player/Head/Camera3D"]
-visible = false
-target_position = Vector3(0, 0, -1.5)
-script = ExtResource("9_bfa6a")
 
 [node name="background" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
 stream = ExtResource("10_gwq0n")
@@ -368,6 +389,33 @@ stream = ExtResource("16_sh6rb")
 
 [node name="sythn2" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
 stream = ExtResource("17_qfxv6")
+
+[node name="glitch1" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("18_0ecmy")
+
+[node name="glitch2" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("19_ilaq4")
+
+[node name="glitch3" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("20_g353h")
+
+[node name="chord1" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("21_grqx8")
+
+[node name="chord2" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("22_b1ops")
+
+[node name="chord3" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("23_n47wt")
+
+[node name="chord4" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("24_p16gi")
+
+[node name="noise1" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("24_ssq46")
+
+[node name="noise2" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("25_a5p1m")
 
 [node name="lefthand" type="RigidBody3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.2, -0.6)

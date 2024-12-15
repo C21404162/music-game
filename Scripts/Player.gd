@@ -36,6 +36,15 @@ const LAYER_PLAYER = 4
 @onready var hum2 = $Head/Camera3D/hum2
 @onready var synth1 = $Head/Camera3D/synth1
 @onready var synth2 = $Head/Camera3D/sythn2
+@onready var glitch1 = $Head/Camera3D/glitch1
+@onready var glitch2 = $Head/Camera3D/glitch2
+@onready var glitch3 = $Head/Camera3D/glitch3
+@onready var chord1 = $Head/Camera3D/chord1
+@onready var chord2 = $Head/Camera3D/chord2
+@onready var chord3 = $Head/Camera3D/chord3
+@onready var chord4 = $Head/Camera3D/chord4
+@onready var noise1 = $Head/Camera3D/noise1
+@onready var noise2 = $Head/Camera3D/noise2
 @onready var horn5 = $Head/Camera3D/horn5
 @onready var horn6 = $Head/Camera3D/horn6
 @onready var horn7 = $Head/Camera3D/horn7
@@ -276,25 +285,22 @@ func _on_left_hand_body_entered(body):
 		"CSGSphere3D6":
 			horn1.play()
 		"CSGSphere3D9":
-			#grab_sound_3.play()
-			pass
+			chord1.play()
 		"CSGSphere3D11":
-			#grab_sound_3.play()
-			pass
+			chord2.play()
 		"CSGSphere3D12":
-			#grab_sound_3.play()
-			pass
+			noise1.play()
+		"CSGSphere3D14":
+			noise2.play()
 		"CSGSphere3D10":
-			#grab_sound_3.play()
-			pass
+			chord3.play()
 		"CSGSphere3D6":
 			#grab_sound_3.play()
 			pass
 		"CSGSphere3D7":
 			hum2.play()
 		"CSGSphere3D13":
-			#grab_sound_3.play()
-			pass
+			chord4.play()
 		"CSGSphere3D8":
 			horn2.play()
 		"CSGSphere3D2":
@@ -309,6 +315,12 @@ func _on_left_hand_body_entered(body):
 			synth1.play()
 		"CSGCylinder3D2":
 			synth2.play()
+		"CSGBox3D3":
+			glitch1.play()
+		"CSGBox3D16":
+			glitch2.play()
+		"CSGBox3D17":
+			glitch3.play()
 		_:
 			print("Unknown object grabbed: ", body.name)
 
