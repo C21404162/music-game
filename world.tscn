@@ -158,6 +158,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 10, -16.5)
 use_collision = true
 material = ExtResource("1_lgiqj")
 
+[node name="CSGSphere3D14" type="CSGSphere3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 10, -16.5)
+use_collision = true
+material = ExtResource("1_lgiqj")
+
 [node name="CSGSphere3D10" type="CSGSphere3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 10, -16.5)
 use_collision = true
@@ -210,6 +215,21 @@ material = ExtResource("1_lgiqj")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.21679, 11.5, -16.5)
+use_collision = true
+material = ExtResource("1_lgiqj")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 4.28321, 8, -16.5)
+use_collision = true
+material = ExtResource("1_lgiqj")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 4.28321, 6, -16.5)
+use_collision = true
+material = ExtResource("1_lgiqj")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Map"]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 6.28321, 7, -16.5)
 use_collision = true
 material = ExtResource("1_lgiqj")
 
@@ -266,6 +286,21 @@ size = Vector3(1, 19, 51)
 [node name="CSGBox3D9" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 32.75, -25.5)
 size = Vector3(1, 29.5, 51)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 11.5, -16.5)
+size = Vector3(2.5, 4, 1)
+material = ExtResource("1_lgiqj")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 6.5, -16.5)
+size = Vector3(1.5, 3.5, 1)
+material = ExtResource("1_lgiqj")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 11.5, -16.5)
+size = Vector3(2.5, 4, 1)
+material = ExtResource("1_lgiqj")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 script = ExtResource("1_vwaj1")
