@@ -29,6 +29,21 @@ const LAYER_PLAYER = 4
 @onready var horn1 = $Head/Camera3D/horn1
 @onready var horn2 = $Head/Camera3D/horn2
 @onready var horn3 = $Head/Camera3D/horn3
+@onready var horn4 = $Head/Camera3D/horn4
+@onready var bar1 = $Head/Camera3D/bar1
+@onready var bar2 = $Head/Camera3D/bar2
+@onready var hum1 = $Head/Camera3D/hum1
+@onready var hum2 = $Head/Camera3D/hum2
+@onready var synth1 = $Head/Camera3D/synth1
+@onready var synth2 = $Head/Camera3D/sythn2
+@onready var horn5 = $Head/Camera3D/horn5
+@onready var horn6 = $Head/Camera3D/horn6
+@onready var horn7 = $Head/Camera3D/horn7
+@onready var horn8 = $Head/Camera3D/horn8
+@onready var horn9 = $Head/Camera3D/horn9
+@onready var horn10 = $Head/Camera3D/horn10
+@onready var horn11 = $Head/Camera3D/horn11
+@onready var horn12 = $Head/Camera3D/horn12
 @onready var grab_sound = $"../grabsound"
 @onready var hand_fx = $"../Map/GPUParticles3D"
 
@@ -257,7 +272,7 @@ func handle_landing():
 func _on_left_hand_body_entered(body):
 	match body.name:
 		"CSGSphere3D":
-			grab_sound.play()
+			hum1.play()
 		"CSGSphere3D6":
 			horn1.play()
 		"CSGSphere3D9":
@@ -276,24 +291,24 @@ func _on_left_hand_body_entered(body):
 			#grab_sound_3.play()
 			pass
 		"CSGSphere3D7":
-			#grab_sound_3.play()
-			pass
+			hum2.play()
 		"CSGSphere3D13":
 			#grab_sound_3.play()
 			pass
 		"CSGSphere3D8":
 			horn2.play()
 		"CSGSphere3D2":
-			#grab_sound_3.play()
-			pass
+			bar1.play()
 		"CSGSphere3D3":
 			horn3.play()
 		"CSGSphere3D4":
-			#grab_sound_3.play()
-			pass
+			bar2.play()
 		"CSGSphere3D5":
-			#grab_sound_3.play()
-			pass
+			horn4.play()
+		"CSGCylinder3D":
+			synth1.play()
+		"CSGCylinder3D2":
+			synth2.play()
 		_:
 			print("Unknown object grabbed: ", body.name)
 

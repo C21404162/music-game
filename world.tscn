@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://daea0cguij4h2"]
+[gd_scene load_steps=39 format=3 uid="uid://daea0cguij4h2"]
 
 [ext_resource type="Material" uid="uid://rt8kwy52hryb" path="res://Materials/highlight.tres" id="1_lgiqj"]
 [ext_resource type="Texture2D" uid="uid://cbywlgvjn8emc" path="res://Textures/696.jpg" id="1_rpqyh"]
@@ -10,9 +10,16 @@
 [ext_resource type="AudioStream" uid="uid://sf81vfawsnaa" path="res://Sounds/Music/ambience.wav" id="10_gwq0n"]
 [ext_resource type="PackedScene" uid="uid://bn52fufkkj352" path="res://Models/bad_hand_left.glb" id="10_rudq1"]
 [ext_resource type="AudioStream" uid="uid://0ekm4k43wwys" path="res://Sounds/SFX/horn1.wav" id="11_owj54"]
+[ext_resource type="AudioStream" uid="uid://ch7ecmjp0rick" path="res://Sounds/SFX/horn4.wav" id="11_vpea0"]
+[ext_resource type="AudioStream" uid="uid://b4jpe7qdfa2tb" path="res://Sounds/SFX/bar1.wav" id="12_nuwc0"]
 [ext_resource type="AudioStream" uid="uid://c3p6qkjbu55vg" path="res://Sounds/SFX/horn2.wav" id="12_xtaay"]
 [ext_resource type="AudioStream" uid="uid://1ggghwmv14e2" path="res://Sounds/SFX/horn3.wav" id="13_4dn6o"]
+[ext_resource type="AudioStream" uid="uid://cfg6qotigvuh1" path="res://Sounds/SFX/bar2.wav" id="13_55aiv"]
 [ext_resource type="AudioStream" uid="uid://n1368xkcp0oa" path="res://Sounds/SFX/grab.wav" id="13_dftgj"]
+[ext_resource type="AudioStream" uid="uid://3kbjfxmawo8t" path="res://Sounds/SFX/hum1.wav" id="14_a0au8"]
+[ext_resource type="AudioStream" uid="uid://ba30fb8b6dvo" path="res://Sounds/SFX/hum2.wav" id="15_1xd3t"]
+[ext_resource type="AudioStream" uid="uid://hpihldvyodii" path="res://Sounds/SFX/synth1.wav" id="16_sh6rb"]
+[ext_resource type="AudioStream" uid="uid://bhktaqslsekc8" path="res://Sounds/SFX/synth2.wav" id="17_qfxv6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v853q"]
 sky_top_color = Color(0.0875817, 0.121094, 0.0859752, 1)
@@ -27,7 +34,7 @@ background_mode = 2
 sky = SubResource("Sky_0r71q")
 ambient_light_color = Color(1, 0.98395, 0.638086, 1)
 ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.1
+ambient_light_energy = 0.01
 tonemap_mode = 2
 ssao_enabled = true
 ssil_enabled = true
@@ -46,25 +53,6 @@ volumetric_fog_ambient_inject = 1.74
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6l77"]
 albedo_texture = ExtResource("1_rpqyh")
 uv1_triplanar = true
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qdk05"]
-emission_shape = 1
-emission_sphere_radius = 1.0
-direction = Vector3(0, -1, 0)
-spread = 90.0
-initial_velocity_min = 2.0
-initial_velocity_max = 4.0
-gravity = Vector3(0, -4, 0)
-scale_min = 0.25
-scale_max = 0.3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kgh6e"]
-albedo_color = Color(0.363281, 0.363281, 0.363281, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_nxoee"]
-material = SubResource("StandardMaterial3D_kgh6e")
-radial_segments = 8
-rings = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtnso"]
 albedo_texture = ExtResource("3_umbod")
@@ -85,6 +73,10 @@ uv1_triplanar = true
 [sub_resource type="BoxMesh" id="BoxMesh_dum3j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x0cdh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mebsk"]
+albedo_texture = ExtResource("3_umbod")
+uv1_triplanar = true
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vxuxf"]
 radius = 0.3
@@ -120,18 +112,8 @@ shadow_enabled = true
 [node name="CSGBox3D" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000499994, 0)
 use_collision = true
-size = Vector3(100, 0.001, 100)
+size = Vector3(50, 0.001, 50)
 material = SubResource("StandardMaterial3D_g6l77")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.5, 0)
-emitting = false
-amount = 12
-one_shot = true
-explosiveness = 1.0
-fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_qdk05")
-draw_pass_1 = SubResource("SphereMesh_nxoee")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Map"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 6.5, -17.75)
@@ -240,6 +222,51 @@ mesh = SubResource("BoxMesh_dum3j")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Node3D"]
 shape = SubResource("BoxShape3D_x0cdh")
 
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 8.5, 0)
+size = Vector3(1, 18, 51)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 8.5, 0)
+material_override = SubResource("StandardMaterial3D_mebsk")
+size = Vector3(1, 18, 51)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Map"]
+transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, 18, 21.5, 0)
+size = Vector3(1, 18, 51)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-0.5, -0.866025, 0, 0.866025, -0.5, 0, 0, 0, 1, -18, 21.5, 0)
+size = Vector3(1, 18, 51)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-0.902277, -0.431157, 0, 0.431157, -0.902277, 0, 0, 0, 1, -6.5, 34, 0)
+size = Vector3(1, 18, 51)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Map"]
+transform = Transform3D(0.94288, -0.333132, 0, 0.333132, 0.94288, 0, 0, 0, 1, 7.5, 33.5, 0)
+size = Vector3(1, 18, 51)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.24925, 41.9642, 0)
+size = Vector3(1, 10.5, 51)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 31, 25.5)
+size = Vector3(1, 27, 51)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 8.5, 25.5)
+size = Vector3(1, 18, 51)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 9, -25.5)
+size = Vector3(1, 19, 51)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 32.75, -25.5)
+size = Vector3(1, 29.5, 51)
+
 [node name="Player" type="CharacterBody3D" parent="."]
 script = ExtResource("1_vwaj1")
 
@@ -263,6 +290,7 @@ spot_range = 7.5
 spot_angle = 65.082
 
 [node name="interactray" type="RayCast3D" parent="Player/Head/Camera3D"]
+visible = false
 target_position = Vector3(0, 0, -1.5)
 script = ExtResource("9_bfa6a")
 
@@ -284,6 +312,27 @@ stream = ExtResource("12_xtaay")
 [node name="horn3" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 stream = ExtResource("13_4dn6o")
+
+[node name="horn4" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("11_vpea0")
+
+[node name="bar1" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("12_nuwc0")
+
+[node name="bar2" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("13_55aiv")
+
+[node name="hum1" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("14_a0au8")
+
+[node name="hum2" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("15_1xd3t")
+
+[node name="synth1" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("16_sh6rb")
+
+[node name="sythn2" type="AudioStreamPlayer3D" parent="Player/Head/Camera3D"]
+stream = ExtResource("17_qfxv6")
 
 [node name="lefthand" type="RigidBody3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.2, -0.6)
