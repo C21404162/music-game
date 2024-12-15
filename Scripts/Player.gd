@@ -45,14 +45,10 @@ const LAYER_PLAYER = 4
 @onready var chord4 = $Head/Camera3D/chord4
 @onready var noise1 = $Head/Camera3D/noise1
 @onready var noise2 = $Head/Camera3D/noise2
-@onready var horn5 = $Head/Camera3D/horn5
-@onready var horn6 = $Head/Camera3D/horn6
-@onready var horn7 = $Head/Camera3D/horn7
-@onready var horn8 = $Head/Camera3D/horn8
-@onready var horn9 = $Head/Camera3D/horn9
-@onready var horn10 = $Head/Camera3D/horn10
-@onready var horn11 = $Head/Camera3D/horn11
-@onready var horn12 = $Head/Camera3D/horn12
+@onready var bass1 = $Head/Camera3D/bass1
+@onready var bass2 = $Head/Camera3D/bass2
+@onready var bass3 = $Head/Camera3D/bass3
+
 @onready var grab_sound = $"../grabsound"
 @onready var hand_fx = $"../Map/GPUParticles3D"
 
@@ -321,6 +317,12 @@ func _on_left_hand_body_entered(body):
 			glitch2.play()
 		"CSGBox3D17":
 			glitch3.play()
+		"CSGCylinder3D3":
+			bass1.play()
+		"CSGCylinder3D4":
+			bass2.play()
+		"CSGCylinder3D5":
+			bass3.play()
 		_:
 			print("Unknown object grabbed: ", body.name)
 
