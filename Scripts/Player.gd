@@ -172,12 +172,16 @@ func handle_movement(delta):
 		velocity.z = lerp(velocity.z, 0.0, delta * 10.0)
 
 func handle_climbing(delta):
-	# Reset velocity when grabbing
-	velocity.x = 0
-	velocity.z = 0
-	velocity.y = 0
-	
+	var hang_point: Vector3
 	var forward_dir = camera.global_transform.basis.z
+
+	if left_hand_grabbing and right_hand_grabbing:
+		hang_point = (grab_point_left + grab_point_right) / 2
+	else:
+		hang_point = grab_point_left if left_hand_grabbing else grab_point_right
+	
+	var target_pos = hang_point + hang_offset
+	velocity = velocity.lerp((target_pos - global_position) * climb_force, delta * 10.0)
 	
 	#jump charge
 	if Input.is_action_pressed("jump"):
