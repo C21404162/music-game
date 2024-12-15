@@ -144,19 +144,8 @@ func handle_movement(delta):
 		velocity.x = lerp(velocity.x, 0.0, delta * 10.0)
 		velocity.z = lerp(velocity.z, 0.0, delta * 10.0)
 
-
 func handle_climbing(delta):
-	var hang_point: Vector3
 	var forward_dir = camera.global_transform.basis.z
-
-	if left_hand_grabbing and right_hand_grabbing:
-		hang_point = (grab_point_left + grab_point_right) / 2
-	else:
-		hang_point = grab_point_left if left_hand_grabbing else grab_point_right
-	
-	#put sound in here
-	var target_pos = hang_point + hang_offset
-	velocity = velocity.lerp((target_pos - global_position) * climb_force, delta * 10.0)
 	
 	#jump charge
 	if Input.is_action_pressed("jump"):
@@ -182,17 +171,13 @@ func check_grab():
 		grab_point_left = left_hand.global_position
 		left_hand_grabbing = true
 		
-		#particles and sound
-		particles_hand(grab_point_left)
 		grab_sound.play()
 		
 	#if hand reaching+made contact+not grabbing anything else
 	if right_hand_reaching and right_hand.get_contact_count() > 0 and !right_hand_grabbing:
 		grab_point_right = right_hand.global_position
 		right_hand_grabbing = true
-		
-		#particles and sound
-		particles_hand(grab_point_right)
+
 		grab_sound.play()
 	
 func update_hands(delta):
@@ -256,10 +241,3 @@ func update_hands(delta):
 func handle_landing():
 	#put sounds, fx
 	velocity.y = 0
-
-func particles_hand(contact_point):
-	# Position the particles at the contact point
-	hand_fx.global_position = contact_point
-	
-	# Start emitting the particles
-	hand_fx.emitting = true
