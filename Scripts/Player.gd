@@ -145,6 +145,10 @@ func handle_movement(delta):
 		velocity.z = lerp(velocity.z, 0.0, delta * 10.0)
 
 func handle_climbing(delta):
+	# Reset horizontal velocity when grabbing
+	velocity.x = 0
+	velocity.z = 0
+	
 	var forward_dir = camera.global_transform.basis.z
 	
 	#jump charge
@@ -164,7 +168,7 @@ func handle_climbing(delta):
 			
 			is_charging_jump = false
 			jump_charge_time = 0.0
-
+			
 func check_grab():
 	#if hand reaching+made contact+not grabbing anything else
 	if left_hand_reaching and left_hand.get_contact_count() > 0 and !left_hand_grabbing:
