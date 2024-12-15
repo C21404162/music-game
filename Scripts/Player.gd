@@ -46,12 +46,16 @@ var noclip_enabled = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	
-	#cam setup
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	setup_hands()
+
+	# Connect body_entered signals for the hands
+	left_hand.connect("body_entered", _on_left_hand_body_entered)
+	right_hand.connect("body_entered", _on_right_hand_body_entered)
+
 	left_hand_initial_offset = left_hand.global_position - camera.global_position
 	right_hand_initial_offset = right_hand.global_position - camera.global_position
+
 
 func setup_hands():
 	left_hand.gravity_scale = 0
@@ -145,7 +149,7 @@ func handle_movement(delta):
 		velocity.z = lerp(velocity.z, 0.0, delta * 10.0)
 
 func handle_climbing(delta):
-	# Reset horizontal velocity when grabbing
+	# Reset velocity when grabbing
 	velocity.x = 0
 	velocity.z = 0
 	velocity.y = 0
@@ -176,14 +180,14 @@ func check_grab():
 		grab_point_left = left_hand.global_position
 		left_hand_grabbing = true
 		
-		grab_sound.play()
+		#grab_sound.play()
 		
 	#if hand reaching+made contact+not grabbing anything else
 	if right_hand_reaching and right_hand.get_contact_count() > 0 and !right_hand_grabbing:
 		grab_point_right = right_hand.global_position
 		right_hand_grabbing = true
 
-		grab_sound.play()
+		#grab_sound.play()
 	
 func update_hands(delta):
 	var cam_basis = camera.global_transform.basis
@@ -246,3 +250,23 @@ func update_hands(delta):
 func handle_landing():
 	#put sounds, fx
 	velocity.y = 0
+
+func _on_left_hand_body_entered(body):
+	match body.name:
+		"CSGSphere3D":
+			grab_sound.play()
+		"Button2":
+			#grab_sound_2.play()
+			pass
+		"Button3":
+			#grab_sound_3.play()
+			pass
+		_:
+			print("Unknown object grabbed: ", body.name)
+
+
+func _on_right_hand_body_entered(body):
+	if body is CSGShape3D:  # Check if the collided object is a CSG node
+		grab_sound.play()
+		grab_point_right = right_hand.global_position
+		right_hand_grabbing = true

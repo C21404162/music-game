@@ -1,5 +1,6 @@
-[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://rt8kwy52hryb"]
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://rt8kwy52hryb"]
 
+[ext_resource type="Texture2D" uid="uid://c2ote7bbhccsr" path="res://Textures/cobble_wall.png" id="1_qin3b"]
 [ext_resource type="Shader" path="res://world.gdshader" id="1_t5vml"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hntit"]
@@ -12,3 +13,5 @@ shader_parameter/shine_width = 3.0
 
 [resource]
 next_pass = SubResource("ShaderMaterial_hntit")
+albedo_texture = ExtResource("1_qin3b")
+uv1_triplanar = true
