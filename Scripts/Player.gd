@@ -148,6 +148,7 @@ func handle_climbing(delta):
 	# Reset horizontal velocity when grabbing
 	velocity.x = 0
 	velocity.z = 0
+	velocity.y = 0
 	
 	var forward_dir = camera.global_transform.basis.z
 	
