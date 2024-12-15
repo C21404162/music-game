@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://cw5ty64yjmos8"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_3ru06"]
+[ext_resource type="PackedScene" uid="uid://8qoj8306fs56" path="res://Models/well_model.glb" id="2_3qr0f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iw7r8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_fm5sv"]
+sky_material = SubResource("ProceduralSkyMaterial_iw7r8")
+
+[sub_resource type="Environment" id="Environment_5lu3y"]
+background_mode = 2
+sky = SubResource("Sky_fm5sv")
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.545796, 0.582674, 0.640625, 1)
+fog_density = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_epqux"]
+albedo_color = Color(0.3125, 0.242007, 0.0569091, 1)
+proximity_fade_distance = 130.35
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -110.0
+offset_right = 12.0
+offset_bottom = -108.0
+grow_vertical = 0
+script = ExtResource("1_3ru06")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.710938, 0.710938, 0.710938, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5lu3y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = 67.0
+offset_bottom = 99.0
+grow_vertical = 0
+
+[node name="start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../exit")
+text = "start"
+
+[node name="options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "options"
+
+[node name="exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../start")
+text = "exit"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4)
+size = Vector3(100, 0, 100)
+material = SubResource("StandardMaterial3D_epqux")
+
+[node name="well_model" parent="." instance=ExtResource("2_3qr0f")]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0.5, -1, -12)
+
+[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_exit_pressed"]

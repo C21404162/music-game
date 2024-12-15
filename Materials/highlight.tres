@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://rt8kwy52hryb"]
+
+[ext_resource type="Shader" path="res://world.gdshader" id="1_t5vml"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hntit"]
+render_priority = 0
+shader = ExtResource("1_t5vml")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/cycle_interval = 1.0
+shader_parameter/shine_speed = 3.0
+shader_parameter/shine_width = 3.0
+
+[resource]
+next_pass = SubResource("ShaderMaterial_hntit")
