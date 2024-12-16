@@ -51,6 +51,7 @@ const LAYER_PLAYER = 4
 
 @onready var grab_sound = $"../grabsound"
 @onready var hand_fx = $"../Map/GPUParticles3D"
+@onready var pop = $"../Map/pop"
 
 
 #climb variables
@@ -282,48 +283,92 @@ func _on_left_hand_body_entered(body):
 	match body.name:
 		"CSGSphere3D":
 			hum1.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D6":
 			horn1.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D9":
 			chord1.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D11":
 			chord2.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D12":
 			noise1.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D14":
 			noise2.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D10":
 			chord3.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D7":
 			hum2.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D13":
 			chord4.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D8":
 			horn2.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D2":
 			bar1.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D3":
 			horn3.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D4":
 			bar2.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D5":
 			horn4.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGCylinder3D":
 			synth1.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGCylinder3D2":
 			synth2.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGBox3D3":
 			glitch1.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGBox3D16":
 			glitch2.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGBox3D17":
 			glitch3.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGCylinder3D3":
 			bass1.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGCylinder3D4":
 			bass2.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGCylinder3D5":
 			bass3.play()
+			pop.global_position = left_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		_:
 			print("Unknown object grabbed: ", body.name)
 
@@ -332,47 +377,91 @@ func _on_right_hand_body_entered(body):
 	match body.name:
 		"CSGSphere3D":
 			hum1.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D6":
 			horn1.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D9":
 			chord1.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D11":
 			chord2.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D12":
 			noise1.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D14":
 			noise2.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D10":
 			chord3.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D7":
 			hum2.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D13":
 			chord4.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D8":
 			horn2.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D2":
 			bar1.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D3":
 			horn3.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D4":
 			bar2.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGSphere3D5":
 			horn4.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGCylinder3D":
 			synth1.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGCylinder3D2":
 			synth2.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGBox3D3":
 			glitch1.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGBox3D16":
 			glitch2.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGBox3D17":
 			glitch3.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGCylinder3D3":
 			bass1.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGCylinder3D4":
 			bass2.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		"CSGCylinder3D5":
 			bass3.play()
+			pop.global_position = right_hand.global_position  # Set particles at hand position
+			pop.emitting = true
 		_:
 			print("Unknown object grabbed: ", body.name)

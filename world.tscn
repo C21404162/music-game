@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://daea0cguij4h2"]
+[gd_scene load_steps=72 format=3 uid="uid://daea0cguij4h2"]
 
 [ext_resource type="Material" uid="uid://rt8kwy52hryb" path="res://Materials/highlight.tres" id="1_lgiqj"]
 [ext_resource type="Texture2D" uid="uid://cbywlgvjn8emc" path="res://Textures/696.jpg" id="1_rpqyh"]
@@ -145,6 +145,33 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0jkk"]
 albedo_texture = ExtResource("4_bqfis")
 uv1_triplanar = true
+
+[sub_resource type="Curve" id="Curve_k0f54"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.693694, 1), 0.0, 0.0, 0, 0, Vector2(0.963964, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gcgbw"]
+curve = SubResource("Curve_k0f54")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_23aek"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_gcgbw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l36ts"]
+albedo_color = Color(1, 0.281208, 0.288668, 1)
+emission_enabled = true
+emission = Color(0.886719, 0, 0, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rhhf0"]
+material = SubResource("StandardMaterial3D_l36ts")
+top_radius = 0.1
+bottom_radius = 0.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vxuxf"]
 radius = 0.3
@@ -409,6 +436,16 @@ material = SubResource("StandardMaterial3D_mr15i")
 transform = Transform3D(4.47035e-08, -2.23517e-08, 1, -0.5, -0.866025, -7.1967e-09, 0.866025, -0.5, -2.98023e-08, 0.25, 6.26795, -21.5)
 size = Vector3(1.5, 16, 1)
 material = SubResource("StandardMaterial3D_q0jkk")
+
+[node name="pop" type="GPUParticles3D" parent="Map"]
+emitting = false
+amount = 24
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_23aek")
+draw_pass_1 = SubResource("CylinderMesh_rhhf0")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 script = ExtResource("1_vwaj1")
