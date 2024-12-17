@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://daea0cguij4h2"]
+[gd_scene load_steps=73 format=3 uid="uid://daea0cguij4h2"]
 
 [ext_resource type="Material" uid="uid://rt8kwy52hryb" path="res://Materials/highlight.tres" id="1_lgiqj"]
 [ext_resource type="Texture2D" uid="uid://cbywlgvjn8emc" path="res://Textures/696.jpg" id="1_rpqyh"]
@@ -32,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://bhwi74n515jgh" path="res://Sounds/SFX/bass2.wav" id="27_7mwna"]
 [ext_resource type="AudioStream" uid="uid://bbffujko8t38i" path="res://Sounds/SFX/bass3.wav" id="28_hb4g1"]
 [ext_resource type="AudioStream" uid="uid://2j5tg7qg48g5" path="res://Sounds/Music/rain.wav" id="29_6jpx4"]
+[ext_resource type="Script" path="res://node_3d_2.gd" id="33_s6plm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v853q"]
 sky_top_color = Color(0.0875817, 0.121094, 0.0859752, 1)
@@ -590,3 +591,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.2, -0.6)
 
 [node name="grabsound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("13_dftgj")
+
+[node name="Node3D2" type="Node3D" parent="."]
+script = ExtResource("33_s6plm")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="Node3D2"]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="Node3D2/XROrigin3D"]
+
+[node name="XRController3D" type="XRController3D" parent="Node3D2/XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="XRController3D2" type="XRController3D" parent="Node3D2/XROrigin3D"]
+tracker = &"right_hand"

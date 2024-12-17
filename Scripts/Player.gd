@@ -67,6 +67,10 @@ var is_charging_jump = false
 var jump_charge_time = 0.0
 var noclip_enabled = false
 
+var is_in_xr = false
+var left_xr_hand: XRController3D
+var right_xr_hand: XRController3D
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
@@ -79,6 +83,12 @@ func _ready():
 
 	left_hand_initial_offset = left_hand.global_position - camera.global_position
 	right_hand_initial_offset = right_hand.global_position - camera.global_position
+	
+	left_xr_hand = get_node_or_null("XROrigin3D/LeftHand")
+	right_xr_hand = get_node_or_null("XROrigin3D/RightHand")
+
+	# Determine if the player is in an XR environment
+	is_in_xr = left_xr_hand != null and right_xr_hand != null
 
 
 func setup_hands():
@@ -122,6 +132,14 @@ func _unhandled_input(event):
 
 func _physics_process(delta):
 	check_grab()
+	
+	if is_in_xr:
+		# Update hand positions and rotations to match the XRController3D nodes
+		left_hand.global_position = left_xr_hand.global_position
+		left_hand.global_rotation = left_xr_hand.global_rotation
+
+		right_hand.global_position = right_xr_hand.global_position
+		right_hand.global_rotation = right_xr_hand.global_rotation
 	
 	if noclip_enabled:
 		handle_noclip(delta)
